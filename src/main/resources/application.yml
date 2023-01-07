@@ -1,0 +1,11 @@
+server:
+  port: 8080
+spring:
+  application:
+    name: tribe-backend
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/tribe?useSSL=false&useUnicode=true&characterEncoding=utf8&allowMultiQueries=true&serverTimezone=Asia/Shanghai
+    username: cttao
+    password: 123456
+
