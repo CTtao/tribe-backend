@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ct.tribe.mapper.TribeMapper">
+
+    <resultMap id="BaseResultMap" type="com.ct.tribe.domain.Tribe">
+            <id property="id" column="id" jdbcType="BIGINT"/>
+            <result property="userId" column="user_id" jdbcType="BIGINT"/>
+            <result property="tribeName" column="tribe_name" jdbcType="VARCHAR"/>
+            <result property="avatar" column="avatar" jdbcType="VARCHAR"/>
+            <result property="mapId" column="map_id" jdbcType="BIGINT"/>
+            <result property="enterMapTime" column="enter_map_time" jdbcType="TIMESTAMP"/>
+            <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
+            <result property="isDelete" column="is_delete" jdbcType="TINYINT"/>
+            <result property="settleTime" column="settle_time" jdbcType="TIMESTAMP"/>
+            <result property="score" column="score" jdbcType="INTEGER"/>
+            <result property="resourceFood" column="resource_food" jdbcType="INTEGER"/>
+            <result property="resourceStone" column="resource_stone" jdbcType="INTEGER"/>
+            <result property="resourceWood" column="resource_wood" jdbcType="INTEGER"/>
+            <result property="resourceGold" column="resource_gold" jdbcType="INTEGER"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id,user_id,tribe_name,
+        avatar,map_id,enter_map_time,
+        create_time,is_delete,settle_time,
+        score,resource_food,resource_stone,
+        resource_wood,resource_gold
+    </sql>
+</mapper>

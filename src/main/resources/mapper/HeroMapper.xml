@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ct.tribe.mapper.HeroMapper">
+
+    <resultMap id="BaseResultMap" type="com.ct.tribe.domain.Hero">
+            <id property="id" column="id" jdbcType="BIGINT"/>
+            <result property="heroName" column="hero_name" jdbcType="VARCHAR"/>
+            <result property="score" column="score" jdbcType="INTEGER"/>
+            <result property="tribeId" column="tribe_id" jdbcType="BIGINT"/>
+            <result property="statusId" column="status_id" jdbcType="TINYINT"/>
+            <result property="actionId" column="action_id" jdbcType="TINYINT"/>
+            <result property="appetite" column="appetite" jdbcType="DOUBLE"/>
+            <result property="advantageId" column="advantage_id" jdbcType="TINYINT"/>
+            <result property="disadvantageId" column="disadvantage_id" jdbcType="TINYINT"/>
+            <result property="isDelete" column="is_delete" jdbcType="TINYINT"/>
+            <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
+            <result property="avatar" column="avatar" jdbcType="TINYINT"/>
+            <result property="gender" column="gender" jdbcType="TINYINT"/>
+            <result property="propPower" column="prop_power" jdbcType="SMALLINT"/>
+            <result property="propIntelligence" column="prop_intelligence" jdbcType="SMALLINT"/>
+            <result property="propPhysique" column="prop_physique" jdbcType="SMALLINT"/>
+            <result property="propGlamour" column="prop_glamour" jdbcType="SMALLINT"/>
+            <result property="propFortune" column="prop_fortune" jdbcType="SMALLINT"/>
+            <result property="propFocus" column="prop_focus" jdbcType="SMALLINT"/>
+            <result property="skillCollectLevel" column="skill_collect_level" jdbcType="TINYINT"/>
+            <result property="skillCollectExp" column="skill_collect_exp" jdbcType="SMALLINT"/>
+            <result property="skillFellLevel" column="skill_fell_level" jdbcType="TINYINT"/>
+            <result property="skillFellExp" column="skill_fell_exp" jdbcType="SMALLINT"/>
+            <result property="skillDigLevel" column="skill_dig_level" jdbcType="TINYINT"/>
+            <result property="skillDigExp" column="skill_dig_exp" jdbcType="SMALLINT"/>
+            <result property="skillHuntLevel" column="skill_hunt_level" jdbcType="TINYINT"/>
+            <result property="skillHuntExp" column="skill_hunt_exp" jdbcType="SMALLINT"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id,hero_name,score,
+        tribe_id,status_id,action_id,
+        appetite,advantage_id,disadvantage_id,
+        is_delete,create_time,avatar,
+        gender,prop_power,prop_intelligence,
+        prop_physique,prop_glamour,prop_fortune,
+        prop_focus,skill_collect_level,skill_collect_exp,
+        skill_fell_level,skill_fell_exp,skill_dig_level,
+        skill_dig_exp,skill_hunt_level,skill_hunt_exp
+    </sql>
+</mapper>

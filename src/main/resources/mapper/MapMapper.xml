@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ct.tribe.mapper.MapMapper">
+
+    <resultMap id="BaseResultMap" type="com.ct.tribe.domain.Map">
+            <id property="id" column="id" jdbcType="BIGINT"/>
+            <result property="mapName" column="map_name" jdbcType="VARCHAR"/>
+            <result property="mapDescription" column="map_description" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id,map_name,map_description
+    </sql>
+</mapper>
