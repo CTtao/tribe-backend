@@ -3,6 +3,7 @@ package com.ct.tribe.domain;
 import java.io.Serializable;
 import java.util.Date;
 
+import com.baomidou.mybatisplus.annotation.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -14,10 +15,12 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@TableName(value = "tribe")
 public class Tribe implements Serializable {
     /**
      * 唯一标识符id
      */
+    @TableId(type = IdType.AUTO)
     private Long id;
 
     /**
@@ -43,11 +46,13 @@ public class Tribe implements Serializable {
     /**
      * 加入该地图的时间
      */
+    @TableField(fill = FieldFill.INSERT)
     private Date enterMapTime;
 
     /**
      * 部落创建时间
      */
+    @TableField(fill = FieldFill.INSERT)
     private Date createTime;
 
     /**
@@ -58,6 +63,7 @@ public class Tribe implements Serializable {
     /**
      * 结算时间，为下次登录做计算的锚点
      */
+    @TableField(fill = FieldFill.INSERT)
     private Date settleTime;
 
     /**

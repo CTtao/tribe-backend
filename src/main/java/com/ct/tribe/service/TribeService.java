@@ -1,5 +1,6 @@
 package com.ct.tribe.service;
 
+import com.ct.tribe.common.Result;
 import com.ct.tribe.domain.Tribe;
 import com.baomidou.mybatisplus.extension.service.IService;
 
@@ -9,5 +10,5 @@ import com.baomidou.mybatisplus.extension.service.IService;
 * @createDate 2023-01-23 11:58:20
 */
 public interface TribeService extends IService<Tribe> {
-
+    Result<Tribe> createTribe(String tribeName, String avatar);
 }
