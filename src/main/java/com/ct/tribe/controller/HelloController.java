@@ -3,6 +3,7 @@ package com.ct.tribe.controller;
 import com.ct.tribe.common.RedisKey;
 import com.ct.tribe.common.Result;
 import com.ct.tribe.domain.Tribe;
+import com.ct.tribe.service.TribeService;
 import com.ct.tribe.utils.RedisCache;
 import com.ct.tribe.utils.ResultUtils;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,6 +20,8 @@ import javax.annotation.Resource;
 public class HelloController {
     @Resource
     private RedisCache redisCache;
+    @Resource
+    private TribeService tribeService;
 
     @RequestMapping
     public String hello(){
@@ -38,5 +41,10 @@ public class HelloController {
     public Result<Tribe> getRedisTribe(){
         Tribe tribe = redisCache.getCacheObject(RedisKey.LOGIN_TRIBE + "-11");
         return ResultUtils.ok(tribe);
+    }
+
+    @GetMapping("/testSaveTribe")
+    public Result<Tribe> testSaveTribe(String tribeName, String avatar){
+        return tribeService.createTribe(tribeName,avatar);
     }
 }
