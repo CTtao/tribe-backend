@@ -6,8 +6,9 @@ package com.ct.tribe.common;
  **/
 public enum HttpCode {
     SUCCESS(200,"ok"),
-    SYSTEM_ERROR(500,"系统服务出错"),
     NO_AUTH(401,"未登录或权限不足"),
+    SYSTEM_ERROR(500,"系统服务出错"),
+    PARAMS_ERROR(501,"参数错误"),
     ;
 
     /**

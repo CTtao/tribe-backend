@@ -1,12 +1,18 @@
 package com.ct.tribe.service.impl;
 
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.ct.tribe.common.HttpCode;
 import com.ct.tribe.common.Result;
 import com.ct.tribe.domain.Tribe;
+import com.ct.tribe.exception.BusinessException;
+import com.ct.tribe.service.HeroService;
 import com.ct.tribe.service.TribeService;
 import com.ct.tribe.mapper.TribeMapper;
 import com.ct.tribe.utils.ResultUtils;
 import org.springframework.stereotype.Service;
+
+import javax.annotation.Resource;
 
 /**
 * @author CTtao
@@ -16,11 +22,17 @@ import org.springframework.stereotype.Service;
 @Service
 public class TribeServiceImpl extends ServiceImpl<TribeMapper, Tribe>
     implements TribeService{
+    @Resource
+    private HeroService heroService;
 
     @Override
     public Result<Tribe> createTribe(String tribeName, String avatar) {
         //todo 从token中获取部落创建者UserId
         Long userId = 1L;
+        if (tribeIsExist(userId)){
+            //todo 测试阶段跳过
+//            throw new BusinessException(HttpCode.PARAMS_ERROR,"您已拥有一个部落，无法再次创建");
+        }
         //创建Tribe
         Tribe tribe = new Tribe();
         tribe.setTribeName(tribeName);
@@ -32,6 +44,7 @@ public class TribeServiceImpl extends ServiceImpl<TribeMapper, Tribe>
 
         this.save(tribe);
         //todo 创建默认的5个hero
+        heroService.initTribeHero(tribe.getId());
         return ResultUtils.ok(tribe);
     }
 
@@ -40,6 +53,13 @@ public class TribeServiceImpl extends ServiceImpl<TribeMapper, Tribe>
         tribe.setResourceStone(count);
         tribe.setResourceWood(count);
         tribe.setResourceFood(count);
+    }
+
+    private boolean tribeIsExist(Long userId){
+        LambdaQueryWrapper<Tribe> queryWrapper = new LambdaQueryWrapper<>();
+        queryWrapper.eq(Tribe::getUserId,userId);
+        long count = this.count(queryWrapper);
+        return count > 0;
     }
 }
 
