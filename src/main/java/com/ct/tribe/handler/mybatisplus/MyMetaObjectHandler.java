@@ -17,6 +17,7 @@ public class MyMetaObjectHandler implements MetaObjectHandler {
         this.setFieldValByName("createTime",new Date(),metaObject);
         this.setFieldValByName("enterMapTime",new Date(),metaObject);
         this.setFieldValByName("settleTime",new Date(),metaObject);
+        this.setFieldValByName("isDelete",0,metaObject);
     }
 
     @Override

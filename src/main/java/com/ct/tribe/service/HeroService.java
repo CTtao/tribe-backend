@@ -3,6 +3,7 @@ package com.ct.tribe.service;
 import com.ct.tribe.common.Result;
 import com.ct.tribe.domain.Hero;
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.ct.tribe.domain.vo.SimpleHeroVO;
 
 import java.util.List;
 
@@ -16,5 +17,5 @@ public interface HeroService extends IService<Hero> {
 
     void initTribeHero(Long tribeId);
 
-    Result<List<Hero>> listHeroByTribeId(Long tribeId);
+    Result<List<SimpleHeroVO>> listHero(Long tribeId);
 }

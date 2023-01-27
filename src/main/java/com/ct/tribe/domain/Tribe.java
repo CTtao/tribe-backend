@@ -58,6 +58,7 @@ public class Tribe implements Serializable {
     /**
      * 0为存在，1为已删除
      */
+    @TableField(fill = FieldFill.INSERT)
     private Integer isDelete;
 
     /**

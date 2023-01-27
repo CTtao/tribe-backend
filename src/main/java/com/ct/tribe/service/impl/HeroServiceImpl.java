@@ -6,8 +6,10 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.ct.tribe.common.Result;
 import com.ct.tribe.constants.HeroConstants;
 import com.ct.tribe.domain.Hero;
+import com.ct.tribe.domain.vo.SimpleHeroVO;
 import com.ct.tribe.mapper.HeroMapper;
 import com.ct.tribe.service.HeroService;
+import com.ct.tribe.utils.BeanCopyUtils;
 import com.ct.tribe.utils.ResultUtils;
 import org.springframework.stereotype.Service;
 
@@ -42,6 +44,7 @@ public class HeroServiceImpl extends ServiceImpl<HeroMapper, Hero>
         hero.setScore(0);
         hero.setAppetite(1.0);
         hero.setStatusId(0);
+        hero.setActionId(0);
         hero.setAdvantageId(-1);
         hero.setDisadvantageId(-1);
         hero.setAvatar(initAvatar(gender));
@@ -65,18 +68,26 @@ public class HeroServiceImpl extends ServiceImpl<HeroMapper, Hero>
     }
 
     /**
-     * @Author CT
-     * @Description // 英雄列表
-     * @Date 10:06 2023/1/27
-     * @Param [tribeId]
-     * @return com.ct.tribe.common.Result<java.util.List<com.ct.tribe.domain.Hero>>
-     **/
+     * 获取英雄列表
+     * @param tribeId
+     * @return
+     */
     @Override
-    public Result<List<Hero>> listHeroByTribeId(Long tribeId) {
+    public Result<List<SimpleHeroVO>> listHero(Long tribeId) {
+        List<Hero> heroList = listHeroByTribeId(tribeId);
+        List<SimpleHeroVO> simpleHeroVOList = BeanCopyUtils.copyBeanList(heroList, SimpleHeroVO.class);
+        return ResultUtils.ok(simpleHeroVOList);
+    }
+
+    /**
+     * 根据tribeId获取完整的英雄列表
+     * @param tribeId
+     * @return
+     */
+    public List<Hero> listHeroByTribeId(Long tribeId) {
         LambdaQueryWrapper<Hero> queryWrapper = new LambdaQueryWrapper<>();
         queryWrapper.eq(Hero::getTribeId,tribeId);
-        List<Hero> heroList = this.list(queryWrapper);
-        return ResultUtils.ok(heroList);
+        return this.list(queryWrapper);
     }
 
     /**
@@ -126,7 +137,7 @@ public class HeroServiceImpl extends ServiceImpl<HeroMapper, Hero>
     }
 
     /**
-     * 随机生成头像序号
+     * 随机生成头像index
      * @param gender
      * @return
      */

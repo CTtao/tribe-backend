@@ -62,6 +62,7 @@ public class Hero implements Serializable {
     /**
      * 0为正常，1为已删除
      */
+    @TableField(fill = FieldFill.INSERT)
     private Integer isDelete;
 
     /**
