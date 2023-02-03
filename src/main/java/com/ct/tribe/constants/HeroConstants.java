@@ -8,4 +8,9 @@ public interface HeroConstants {
     int MAX_MALE_AVATAR = 32;
     int MAX_FEMALE_AVATAR = 25;
     int MAX_OTHER_AVATAR = 6;
+
+    /**
+     * 初始化英雄时默认的总属性点
+     */
+    int DEFAULT_PROPS = 200;
 }
