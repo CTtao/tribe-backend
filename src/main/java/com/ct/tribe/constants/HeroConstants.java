@@ -12,5 +12,5 @@ public interface HeroConstants {
     /**
      * 初始化英雄时默认的总属性点
      */
-    int DEFAULT_PROPS = 200;
+    int DEFAULT_PROP = 200;
 }

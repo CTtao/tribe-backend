@@ -2,6 +2,7 @@ package com.ct.tribe.domain;
 
 import java.io.Serializable;
 import java.math.RoundingMode;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -57,7 +58,7 @@ public class Hero implements Serializable {
     /**
      * 优点id
      */
-    private Integer advantageId = -1;
+    private Integer advantageId = RandomUtil.randomInt(0, 6);
 
     /**
      * 缺点id
@@ -180,7 +181,8 @@ public class Hero implements Serializable {
         }
         // 优点：小鸟胃
         if(this.getAdvantageId() == 0) {
-            appetite /= 2;
+            DecimalFormat df = new DecimalFormat(".0");
+            appetite = Double.parseDouble(df.format(appetite/2));
         }
         // 缺点：大胃王
         if(this.getDisadvantageId() == 0) {
@@ -228,7 +230,9 @@ public class Hero implements Serializable {
     }
     private void initProps() {
         int[] propList = {0,0,0,0,0,0};
-        for (int i = 0; i < HeroConstants.DEFAULT_PROPS; i++) {
+        // 天才初始300点属性
+        int defaultProp = this.getAdvantageId() == 3 ? 300 : HeroConstants.DEFAULT_PROP;
+        for (int i = 0; i < defaultProp; i++) {
             propList[RandomUtil.randomInt(0,6)]++;
         }
         this.setPropPower(propList[0]);
