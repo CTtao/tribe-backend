@@ -13,7 +13,7 @@ import java.util.List;
 * @createDate 2023-01-23 18:12:05
 */
 public interface HeroService extends IService<Hero> {
-    Hero createHero(Long tribeId);
+    Hero createHero(Long tribeId, int gender);
 
     void initTribeHero(Long tribeId);
 
