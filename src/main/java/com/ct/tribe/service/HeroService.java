@@ -18,4 +18,6 @@ public interface HeroService extends IService<Hero> {
     void initTribeHero(Long tribeId);
 
     Result<List<SimpleHeroVO>> listHero(Long tribeId);
+
+    Result<Hero> heroDetail(Long heroId);
 }

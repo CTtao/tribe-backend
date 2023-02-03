@@ -69,6 +69,16 @@ public class HeroServiceImpl extends ServiceImpl<HeroMapper, Hero>
     }
 
     /**
+     * 获取单个英雄的详细信息
+     * @param heroId
+     * @return
+     */
+    @Override
+    public Result<Hero> heroDetail(Long heroId) {
+        return ResultUtils.ok(this.getById(heroId));
+    }
+
+    /**
      * 根据tribeId获取完整的英雄列表
      * @param tribeId
      * @return
