@@ -11,4 +11,6 @@ import com.baomidou.mybatisplus.extension.service.IService;
 */
 public interface TribeService extends IService<Tribe> {
     Result<Tribe> createTribe(String tribeName, String avatar);
+
+    Result<Tribe> getTribeDetail(Long tribeId);
 }
