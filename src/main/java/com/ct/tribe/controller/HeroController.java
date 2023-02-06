@@ -28,7 +28,7 @@ public class HeroController {
      * @return
      */
     @GetMapping("/list/{tribeId}")
-    public Result<List<SimpleHeroVO>> listHeroByTribeId(@PathVariable Long tribeId){
+    public Result<List<Hero>> listHeroByTribeId(@PathVariable Long tribeId){
         return heroService.listHero(tribeId);
     }
 

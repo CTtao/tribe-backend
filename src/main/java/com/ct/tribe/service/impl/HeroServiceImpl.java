@@ -62,10 +62,10 @@ public class HeroServiceImpl extends ServiceImpl<HeroMapper, Hero>
      * @return
      */
     @Override
-    public Result<List<SimpleHeroVO>> listHero(Long tribeId) {
+    public Result<List<Hero>> listHero(Long tribeId) {
         List<Hero> heroList = listHeroByTribeId(tribeId);
-        List<SimpleHeroVO> simpleHeroVOList = BeanCopyUtils.copyBeanList(heroList, SimpleHeroVO.class);
-        return ResultUtils.ok(simpleHeroVOList);
+//        List<SimpleHeroVO> simpleHeroVOList = BeanCopyUtils.copyBeanList(heroList, SimpleHeroVO.class);
+        return ResultUtils.ok(heroList);
     }
 
     /**
