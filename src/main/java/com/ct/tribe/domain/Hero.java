@@ -231,7 +231,7 @@ public class Hero implements Serializable {
     private void initProps() {
         int[] propList = {0,0,0,0,0,0};
         // 天才初始300点属性
-        int defaultProp = this.getAdvantageId() == 3 ? 300 : HeroConstants.DEFAULT_PROP;
+        int defaultProp = this.getAdvantageId() == 3 ? HeroConstants.GENIUS_PROP : HeroConstants.DEFAULT_PROP;
         for (int i = 0; i < defaultProp; i++) {
             propList[RandomUtil.randomInt(0,6)]++;
         }
