@@ -8,9 +8,13 @@
             <id property="id" column="id" jdbcType="BIGINT"/>
             <result property="mapName" column="map_name" jdbcType="VARCHAR"/>
             <result property="mapDescription" column="map_description" jdbcType="VARCHAR"/>
+            <result property="resourceFood" column="resource_food" jdbcType="INTEGER"/>
+            <result property="resourceStone" column="resource_stone" jdbcType="INTEGER"/>
+            <result property="resourceWood" column="resource_wood" jdbcType="INTEGER"/>
     </resultMap>
 
     <sql id="Base_Column_List">
-        id,map_name,map_description
+        id,map_name,map_description,
+        resource_food,resource_stone,resource_wood
     </sql>
 </mapper>
