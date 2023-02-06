@@ -2,10 +2,8 @@ package com.ct.tribe.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.ct.tribe.common.HttpCode;
 import com.ct.tribe.common.Result;
 import com.ct.tribe.domain.Tribe;
-import com.ct.tribe.exception.BusinessException;
 import com.ct.tribe.service.HeroService;
 import com.ct.tribe.service.TribeService;
 import com.ct.tribe.mapper.TribeMapper;
@@ -29,10 +27,10 @@ public class TribeServiceImpl extends ServiceImpl<TribeMapper, Tribe>
     public Result<Tribe> createTribe(String tribeName, String avatar) {
         //todo 从token中获取部落创建者UserId
         Long userId = 1L;
-        if (tribeIsExist(userId)){
+//        if (tribeIsExist(userId)){
             //todo 测试阶段跳过
 //            throw new BusinessException(HttpCode.PARAMS_ERROR,"您已拥有一个部落，无法再次创建");
-        }
+//        }
         //创建Tribe
         Tribe tribe = new Tribe();
         tribe.setTribeName(tribeName);
@@ -55,12 +53,32 @@ public class TribeServiceImpl extends ServiceImpl<TribeMapper, Tribe>
         tribe.setResourceFood(count);
     }
 
-    private boolean tribeIsExist(Long userId){
+    /**
+     * 根据id检查该部落是否存在
+     * @param tribeId
+     * @return
+     */
+    private boolean tribeIsExist(Long tribeId){
         LambdaQueryWrapper<Tribe> queryWrapper = new LambdaQueryWrapper<>();
-        queryWrapper.eq(Tribe::getUserId,userId);
+        queryWrapper.eq(Tribe::getId,tribeId);
         long count = this.count(queryWrapper);
         return count > 0;
     }
+
+    /**
+     * 获取部落详情
+     * @param tribeId
+     * @return
+     */
+    public Result<Tribe> getTribeDetail(Long tribeId) {
+        if(tribeIsExist(tribeId)) {
+            Tribe tribe = this.getById(tribeId);
+            return ResultUtils.ok(tribe);
+        }else {
+            return ResultUtils.error(400, "无法查找到该部落");
+        }
+    }
+
 }
 
 
